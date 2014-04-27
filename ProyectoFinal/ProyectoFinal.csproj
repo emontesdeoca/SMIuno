@@ -374,6 +374,7 @@
     <Content Include="Images\hospital.png" />
     <Content Include="Images\inhaler.png" />
     <Content Include="Images\iv bag.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\lupa.png" />
     <Content Include="Images\medical-icons.jpg" />
     <Content Include="Images\medkit.png" />
