@@ -1,0 +1,263 @@
+﻿@model IEnumerable<ProyectoFinal.Models.RootObject>
+
+@{
+    ViewBag.Title = "Sala de Emergencias";
+}
+<h2>Sala de Emergencias</h2>
+
+@*<h3>Pacientes entrantes</h3>*@
+
+<div id="detailEmergency">
+    <table>
+        <tr>
+            <th>
+                @Html.Label("Fecha")
+            </th>
+            <th>
+                @Html.Label("Paciente")
+            </th>
+            <th>
+                @Html.Label("Responsable")
+            </th>
+            <th>
+                @Html.Label("Edad")
+            </th>
+            <th>
+                @Html.Label("Sexo")
+            </th>
+            <th>
+                @Html.Label("FC")
+            </th>
+            <th>
+                @Html.Label("TA")
+            </th>
+            <th>
+                @Html.Label("Alergias")
+            </th>
+            <th>
+                @Html.Label("Nivel")
+            </th>
+            <th>
+                @Html.Label("Posición")
+            </th>
+        </tr>
+
+        @foreach (var item in Model.OrderByDescending(a => a.modeloDatos.id).Take(3))
+        {
+            <tr>
+                <td>
+                    @item.modeloDatos.Fecha.dayOfMonth/@item.modeloDatos.Fecha.month/@item.modeloDatos.Fecha.year @item.modeloDatos.Fecha.hourOfDay:@item.modeloDatos.Fecha.minute:@item.modeloDatos.Fecha.second
+                </td>
+                <td>
+                    @item.modeloDatos.NombrePaciente
+                </td>
+                <td>
+                    @item.modeloDatos.NombreResponsable
+                </td>
+                <td>
+                    @item.modeloDatos.Edad
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloDatos.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloExamen.Fc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloExamen.Ta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloMotivos.Alergias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloTrauma.Nivel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeloTrauma.Posicion)
+                </td>
+
+                @*        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>*@
+            </tr>
+        }
+
+    </table>
+</div>
+
+<head>
+    <script type="text/javascript">
+        function ShowCurrentTime() {
+            var dt = new Date();
+            document.getElementById("lblTime").innerHTML = dt.toLocaleTimeString();
+            setTimeout("ShowCurrentTime()", 1000); // Here 1000(milliseconds) means one 1 Sec
+        }
+    </script>
+</head>
+<body onload="ShowCurrentTime()">
+    <div style="float: right; position: absolute; right: 200px; top: 100px">
+        <label id="lblTime" style="font-weight: bold"></label>
+    </div>
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+<div id="map_canvas" style="width: 840px; height: 380px; border-style: solid; border-width: 2px; border-color: #808080; left: 200px; margin-bottom: 50px; position: absolute; top: 35%; left: 20%; clear: both; float: right">
+</div>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        initialize();
+        window.setInterval(function () {
+            $.ajax('@Url.Action("GetAmbulances", "Home")', {
+                success: function (data) {
+                    window.ambulanciaUno.setPosition(new google.maps.LatLng(
+                        data.Coordenada1.latitudUno,
+                        data.Coordenada1.longitudUno));
+
+                    window.ambulanciaDos.setPosition(new google.maps.LatLng(
+                        data.Coordenada2.latitudDos,
+                        data.Coordenada2.longitudDos));
+
+                    window.ambulanciaTres.setPosition(new google.maps.LatLng(
+                        data.Coordenada3.latitudTres,
+                        data.Coordenada3.longitudTres));
+                },
+                error: function (err) {
+                    var x = 1;
+                }
+
+            })
+
+        }, 2000);
+    });
+    function initialize() {
+        //Centro del mapa
+
+        var myLatlng = new google.maps.LatLng(18.469771, -69.929341);
+
+        //Coordenadas de las ambulancias
+        var latitud1 = "@ViewBag.LatitudUno";
+        var longitud1 = "@ViewBag.LongitudUno";
+        var latitud2 = "@ViewBag.LatitudDos";
+        var longitud2 = "@ViewBag.LongitudDos";
+        var latitud3 = "@ViewBag.LatitudTres";
+        var longitud3 = "@ViewBag.LongitudTres";
+
+        //Ubicacion de las Ambulancias
+        var UbicacionAmbulanciaUno = new google.maps.LatLng(latitud1, longitud1);
+        var UbicacionAmbulanciaDos = new google.maps.LatLng(latitud2, longitud2);
+        var UbicacionAmbulanciaTres = new google.maps.LatLng(latitud3, longitud3);
+
+        //Ubicacion permanente de los hospitales
+        var latHospiten = new google.maps.LatLng(18.465092, -69.921041);
+        var latUce = new google.maps.LatLng(18.471697, -69.912690);
+        var latAbreu = new google.maps.LatLng(18.466974, -69.894987);
+        var latDominicano = new google.maps.LatLng(18.455750, -69.955993);
+        var latModerno = new google.maps.LatLng(18.475867, -69.957455);
+        var latAbel = new google.maps.LatLng(18.474350, -69.934749);
+        var latFuerzas = new google.maps.LatLng(18.480931, -69.921139);
+        var latCorazones = new google.maps.LatLng(18.477774, -69.922845);
+
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 14,
+            //mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var hopitalSmiIcon = {
+            url: 'http://maps.google.com/mapfiles/kml/pal4/icon55.png'
+        };
+        var hospitalIcon = {
+            url: 'http://maps.google.com/mapfiles/kml/pal5/icon11.png'
+        };
+        var ambulanciaUnoIcon = {
+            url: 'http://maps.google.com/mapfiles/kml/paddle/grn-stars.png'
+        };
+        var ambulanciaDosIcon = {
+            url: 'http://maps.google.com/mapfiles/kml/paddle/blu-stars.png'
+        };
+        var ambulanciaTresIcon = {
+            url: 'http://maps.google.com/mapfiles/kml/paddle/red-stars.png'
+        };
+        google.maps.visualRefresh = true;
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+        mapOptions);
+        //setMarkers(map, hospitales);
+
+        // create a marker 
+        //Hospitales
+        //var latlng = new google.maps.LatLng(latitud, longitud);
+        var hospiten = new google.maps.Marker({
+            position: latHospiten,
+            map: map,
+            icon: hopitalSmiIcon,
+            title: 'HOSPITEN'
+        });
+        var uce = new google.maps.Marker({
+            position: latUce,
+            map: map,
+            icon: hopitalSmiIcon,
+            title: 'UCE'
+        });
+        var abreu = new google.maps.Marker({
+            position: latAbreu,
+            map: map,
+            icon: hopitalSmiIcon,
+            title: 'ABREU'
+        });
+        var dominicano = new google.maps.Marker({
+            position: latDominicano,
+            map: map,
+            icon: hospitalIcon,
+            title: 'Centro Medico Dominicano'
+        });
+        var moderno = new google.maps.Marker({
+            position: latModerno,
+            map: map,
+            icon: hospitalIcon,
+            title: 'Centro Medico Moderno'
+        });
+        var moderno = new google.maps.Marker({
+            position: latAbel,
+            map: map,
+            icon: hospitalIcon,
+            title: 'Abel Gonzalez'
+        });
+        var fuerzas = new google.maps.Marker({
+            position: latFuerzas,
+            map: map,
+            icon: hospitalIcon,
+            title: 'Hospital Central de las Fuerzas Armadas'
+        });
+        var corazones = new google.maps.Marker({
+            position: latCorazones,
+            map: map,
+            icon: hospitalIcon,
+            title: 'Clinica Corazones Unidos'
+        });
+        //Ambulancias
+        window.ambulanciaUno = new google.maps.Marker({
+            position: UbicacionAmbulanciaUno,
+            map: map,
+            icon: ambulanciaUnoIcon,
+            animation: google.maps.Animation.BOUNCE,
+            title: 'Ambulancia A'
+        });
+        window.ambulanciaDos = new google.maps.Marker({
+            position: UbicacionAmbulanciaDos,
+            map: map,
+            icon: ambulanciaDosIcon,
+            animation: google.maps.Animation.BOUNCE,
+            title: 'Ambulancia B'
+        });
+        window.ambulanciaTres = new google.maps.Marker({
+            position: UbicacionAmbulanciaTres,
+            map: map,
+            icon: ambulanciaTresIcon,
+            animation: google.maps.Animation.BOUNCE,
+            title: 'Ambulancia C'
+        });
+    }
+
+</script>

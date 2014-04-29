@@ -1,0 +1,39 @@
+﻿@model ProyectoFinal.Models.Image
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Agregar Imagen</h2>
+
+@using (Html.BeginForm("Create", "UploadPhotos", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Image</legend>
+
+        @Html.HiddenFor(model => model.CreadoPor)
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.ImagePath)*@
+        </div>
+        <div class="editor-field">
+            <form action="~/UploadPhotos/Create" method="post">
+            <input id="ImagePath" title="Elija un archivo" type="file" name="file" />
+                <p><input type="submit" value="Create" /></p>
+                </form>
+        </div>
+        
+
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
