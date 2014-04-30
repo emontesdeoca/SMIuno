@@ -112,7 +112,10 @@ namespace ProyectoFinal.Controllers
             var locationTres = (from o in db.ModeloCoordenadaTres orderby o.id descending select o).FirstOrDefault();
             ViewBag.LatitudTres = locationTres.latitudTres;
             ViewBag.LongitudTres = locationTres.longitudTres;
-
+            if (!db.RootObjects)
+            {
+                Response.AddHeader("Refresh", "1");
+            }
             //Response.AddHeader("Refresh", "10");
             return View(db.RootObjects.ToList());
         }
