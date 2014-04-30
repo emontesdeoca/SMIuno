@@ -38,7 +38,6 @@ namespace ProyectoFinal.Controllers
 
             return View();
         }
-        //[HttpPost]
         [AllowAnonymous]
         public ActionResult Insert(string data)
         {
@@ -55,7 +54,7 @@ namespace ProyectoFinal.Controllers
             return new JsonResult { Data = "Eureka" };
         }
 
-        [HttpPost]
+        [HttpGet]
         [AllowAnonymous]
         public string Ubicacion(string latitud, string longitud, int id)
         {
