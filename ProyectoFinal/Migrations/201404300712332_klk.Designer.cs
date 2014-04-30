@@ -5,18 +5,18 @@ namespace ProyectoFinal.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class agregueParamedic : IMigrationMetadata
+    public sealed partial class klk : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(agregueParamedic));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(klk));
         
         string IMigrationMetadata.Id
         {
-            get { return "201311240007118_agregueParamedic"; }
+            get { return "201404300712332_klk"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target
