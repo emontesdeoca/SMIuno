@@ -19,15 +19,15 @@ namespace ProyectoFinal.Models
         [StringLength(60)]
         public string Nombre { get; set; }
 
-        [Required(ErrorMessage = "El campo -Apellido- es requerido.")]
+        //[Required(ErrorMessage = "El campo -Apellido- es requerido.")]
         [StringLength(60)]
         public string Apellido { get; set; }
 
-        [Required(ErrorMessage = "El campo -Cedula- es requerido.")]
+        //[Required(ErrorMessage = "El campo -Cedula- es requerido.")]
         [StringLength(11, MinimumLength = 11)]
         public string Cedula { get; set; }
 
-        [Required(ErrorMessage = "El campo -Fecha de Nacimiento- es requerido.")]
+        //[Required(ErrorMessage = "El campo -Fecha de Nacimiento- es requerido.")]
         public DateTime FechaNacimiento { get; set; }
 
         [Required(ErrorMessage = "El campo -Edad- es requerido.")]
@@ -45,10 +45,10 @@ namespace ProyectoFinal.Models
 
         public string NumeroSeguroSocial { get; set; }
 
-        [Required(ErrorMessage = "El campo -Religión- es requerido.")]
+        //[Required(ErrorMessage = "El campo -Religión- es requerido.")]
         public string Religion { get; set; }
 
-        [Required(ErrorMessage = "El campo -Creado por- es requerido.")]
+        //[Required(ErrorMessage = "El campo -Creado por- es requerido.")]
         public string CreadoPor { get; set; }
 
         public FormBloodPressure formBloodPressure;

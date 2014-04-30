@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201404301743061_AddingCedula.Designer.cs">
       <DependentUpon>201404301743061_AddingCedula.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404301936182_asdqwefad.cs" />
+    <Compile Include="Migrations\201404301936182_asdqwefad.Designer.cs">
+      <DependentUpon>201404301936182_asdqwefad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ModeloCoordenadasDos.cs" />
@@ -521,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404301743061_AddingCedula.resx">
       <DependentUpon>201404301743061_AddingCedula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404301936182_asdqwefad.resx">
+      <DependentUpon>201404301936182_asdqwefad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

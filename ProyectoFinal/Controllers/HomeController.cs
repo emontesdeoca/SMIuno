@@ -45,15 +45,30 @@ namespace ProyectoFinal.Controllers
             {
                 var recibido = JsonConvert.DeserializeObject<RootObject>(data);
 
+                if (!db.Patients.Any(model => model.Cedula == recibido.modeloDatos.Cedula))
+                {
+                    int edad = 0;
+                    var edadValida = int.TryParse(recibido.modeloDatos.Edad,out edad);
+                    db.Patients.Add(new PatientModel
+                    {
+                        Nombre = recibido.modeloDatos.NombrePaciente,
+                        Cedula = recibido.modeloDatos.Cedula,
+                        CreadoPor = "Paramédico",
+                        Edad = (edadValida) ? edad : 0,
+                        SeguroMedico = recibido.modeloDatos.SeguroMedico,
+                        Sexo = recibido.modeloDatos.Sexo
+                    });
+                    db.SaveChanges();
+                }
 
                 repo.InsertOrUpdate(recibido);
                 repo.Save();
             }
             catch (Exception err)
             {
-                return new JsonResult { Data = err.ToString() };
+                return new JsonResult { Data = err.ToString(),JsonRequestBehavior = JsonRequestBehavior.AllowGet};
             }
-            return new JsonResult { Data = "Eureka" };
+            return new JsonResult { Data = "Eureka",JsonRequestBehavior = JsonRequestBehavior.AllowGet};
         }
 
         [HttpGet]
@@ -114,18 +129,15 @@ namespace ProyectoFinal.Controllers
             var locationTres = (from o in db.ModeloCoordenadaTres orderby o.id descending select o).FirstOrDefault();
             ViewBag.LatitudTres = locationTres.latitudTres;
             ViewBag.LongitudTres = locationTres.longitudTres;
-            if (!db.RootObjects)
-            {
-                Response.AddHeader("Refresh", "1");
-            }
+        
             //Response.AddHeader("Refresh", "10");
             return View(db.RootObjects.ToList());
         }
 
-        public JsonResult GetAmbulances() 
+        public JsonResult GetAmbulances()
         {
-            
-            
+
+
             var result = new JsonResult();
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             var data = new
