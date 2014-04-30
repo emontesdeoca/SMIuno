@@ -55,7 +55,8 @@ namespace ProyectoFinal.Controllers
             return new JsonResult { Data = "Eureka" };
         }
 
-        [HttpGet]
+        [HttpPost]
+        [AllowAnonymous]
         public string Ubicacion(string latitud, string longitud, int id)
         {
             ModeloCoordenadasUno coordenadaUno = new ModeloCoordenadasUno();
