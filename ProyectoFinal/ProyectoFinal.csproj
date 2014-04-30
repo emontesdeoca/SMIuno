@@ -259,49 +259,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201311240007118_agregueParamedic.cs" />
-    <Compile Include="Migrations\201311240007118_agregueParamedic.Designer.cs">
-      <DependentUpon>201311240007118_agregueParamedic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201311240008267_agregueParamedicStruct.cs" />
-    <Compile Include="Migrations\201311240008267_agregueParamedicStruct.Designer.cs">
-      <DependentUpon>201311240008267_agregueParamedicStruct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402260525419_agregueFotos.cs" />
-    <Compile Include="Migrations\201402260525419_agregueFotos.Designer.cs">
-      <DependentUpon>201402260525419_agregueFotos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402260551420_agregueFotosCreadoPor.cs" />
-    <Compile Include="Migrations\201402260551420_agregueFotosCreadoPor.Designer.cs">
-      <DependentUpon>201402260551420_agregueFotosCreadoPor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402260555060_agregueFotosCreadoPor1.cs" />
-    <Compile Include="Migrations\201402260555060_agregueFotosCreadoPor1.Designer.cs">
-      <DependentUpon>201402260555060_agregueFotosCreadoPor1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201402260559055_agregueFotosCreadoPor2.cs" />
-    <Compile Include="Migrations\201402260559055_agregueFotosCreadoPor2.Designer.cs">
-      <DependentUpon>201402260559055_agregueFotosCreadoPor2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404222353138_agreguecoordernadas.cs" />
-    <Compile Include="Migrations\201404222353138_agreguecoordernadas.Designer.cs">
-      <DependentUpon>201404222353138_agreguecoordernadas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404230023175_agreguecoordernadas2.cs" />
-    <Compile Include="Migrations\201404230023175_agreguecoordernadas2.Designer.cs">
-      <DependentUpon>201404230023175_agreguecoordernadas2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404282005309_nuevasCoordenadas.cs" />
-    <Compile Include="Migrations\201404282005309_nuevasCoordenadas.Designer.cs">
-      <DependentUpon>201404282005309_nuevasCoordenadas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404282037031_cambioModeloCoordenadas.cs" />
-    <Compile Include="Migrations\201404282037031_cambioModeloCoordenadas.Designer.cs">
-      <DependentUpon>201404282037031_cambioModeloCoordenadas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.cs" />
-    <Compile Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.Designer.cs">
-      <DependentUpon>201404300441147_AllowingMultipleModeloTrauma.cs</DependentUpon>
+    <Compile Include="Migrations\201404300712332_klk.cs" />
+    <Compile Include="Migrations\201404300712332_klk.Designer.cs">
+      <DependentUpon>201404300712332_klk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -552,38 +512,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201311240007118_agregueParamedic.resx">
-      <DependentUpon>201311240007118_agregueParamedic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311240008267_agregueParamedicStruct.resx">
-      <DependentUpon>201311240008267_agregueParamedicStruct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402260525419_agregueFotos.resx">
-      <DependentUpon>201402260525419_agregueFotos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402260551420_agregueFotosCreadoPor.resx">
-      <DependentUpon>201402260551420_agregueFotosCreadoPor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402260555060_agregueFotosCreadoPor1.resx">
-      <DependentUpon>201402260555060_agregueFotosCreadoPor1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201402260559055_agregueFotosCreadoPor2.resx">
-      <DependentUpon>201402260559055_agregueFotosCreadoPor2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404222353138_agreguecoordernadas.resx">
-      <DependentUpon>201404222353138_agreguecoordernadas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404230023175_agreguecoordernadas2.resx">
-      <DependentUpon>201404230023175_agreguecoordernadas2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404282005309_nuevasCoordenadas.resx">
-      <DependentUpon>201404282005309_nuevasCoordenadas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404282037031_cambioModeloCoordenadas.resx">
-      <DependentUpon>201404282037031_cambioModeloCoordenadas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.resx">
-      <DependentUpon>201404300441147_AllowingMultipleModeloTrauma.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404300712332_klk.resx">
+      <DependentUpon>201404300712332_klk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

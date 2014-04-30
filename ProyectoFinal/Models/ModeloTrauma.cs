@@ -8,5 +8,6 @@ namespace ProyectoFinal.Models
         public int id { get; set; }
         public string Nivel { get; set; }
         public string Posicion { get; set; }
+        public int RootObjectId { get; set; }
     }
 }

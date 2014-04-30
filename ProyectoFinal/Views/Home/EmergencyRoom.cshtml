@@ -69,18 +69,21 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.modeloMotivos.Alergias)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.modeloTrauma.Nivel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.modeloTrauma.Posicion)
-                </td>
+                @foreach (var trauma in item.modeloTrauma)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => trauma.Nivel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trauma.Posicion)
+                    </td>
+                }
 
                 @*        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>*@
+                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                    </td>*@
             </tr>
         }
 
@@ -185,7 +188,7 @@
         mapOptions);
         //setMarkers(map, hospitales);
 
-        // create a marker 
+        // create a marker
         //Hospitales
         //var latlng = new google.maps.LatLng(latitud, longitud);
         var hospiten = new google.maps.Marker({
