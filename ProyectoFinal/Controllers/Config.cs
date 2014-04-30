@@ -4,7 +4,7 @@
     {
         public static int HospitalId
         {
-            get { return 0; }
+            get { return 1; }
         }
     }
 }
