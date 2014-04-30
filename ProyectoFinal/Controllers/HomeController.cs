@@ -56,7 +56,8 @@ namespace ProyectoFinal.Controllers
                         CreadoPor = "Paramédico",
                         Edad = (edadValida) ? edad : 0,
                         SeguroMedico = recibido.modeloDatos.SeguroMedico,
-                        Sexo = recibido.modeloDatos.Sexo
+                        Sexo = recibido.modeloDatos.Sexo   ,
+                        FechaNacimiento = new DateTime(DateTime.Now.Year - edad,1,1)
                     });
                     db.SaveChanges();
                 }
