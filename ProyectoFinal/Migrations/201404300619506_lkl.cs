@@ -3,13 +3,11 @@ namespace ProyectoFinal.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AllowingMultipleModeloTrauma : DbMigration
+    public partial class lkl : DbMigration
     {
         public override void Up()
         {
-            DropForeignKey("dbo.RootObjects", "modeloTrauma_id", "dbo.Modelo_Trauma");
-            DropIndex("dbo.RootObjects", new[] { "modeloTrauma_id" });
-            DropColumn("dbo.RootObjects", "modeloTrauma_id");
+           
         }
         
         public override void Down()

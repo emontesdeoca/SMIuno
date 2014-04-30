@@ -5,13 +5,13 @@ namespace ProyectoFinal.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class AllowingMultipleModeloTrauma : IMigrationMetadata
+    public sealed partial class lkl : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AllowingMultipleModeloTrauma));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(lkl));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404300441147_AllowingMultipleModeloTrauma"; }
+            get { return "201404300619506_lkl"; }
         }
         
         string IMigrationMetadata.Source

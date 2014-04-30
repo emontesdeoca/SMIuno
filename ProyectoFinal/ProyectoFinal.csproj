@@ -299,9 +299,9 @@
     <Compile Include="Migrations\201404282037031_cambioModeloCoordenadas.Designer.cs">
       <DependentUpon>201404282037031_cambioModeloCoordenadas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.cs" />
-    <Compile Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.Designer.cs">
-      <DependentUpon>201404300441147_AllowingMultipleModeloTrauma.cs</DependentUpon>
+    <Compile Include="Migrations\201404300619506_lkl.cs" />
+    <Compile Include="Migrations\201404300619506_lkl.Designer.cs">
+      <DependentUpon>201404300619506_lkl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -582,8 +582,8 @@
     <EmbeddedResource Include="Migrations\201404282037031_cambioModeloCoordenadas.resx">
       <DependentUpon>201404282037031_cambioModeloCoordenadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404300441147_AllowingMultipleModeloTrauma.resx">
-      <DependentUpon>201404300441147_AllowingMultipleModeloTrauma.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404300619506_lkl.resx">
+      <DependentUpon>201404300619506_lkl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
