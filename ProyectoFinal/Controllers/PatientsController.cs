@@ -34,9 +34,13 @@ namespace ProyectoFinal.Controllers
             {
                 return HttpNotFound();
             }
-            var rootObjects = db.RootObjects.Where(o => o.modeloDatos.Cedula == patientmodel.Cedula).OrderBy(o => o.id);
+            var rootObjects = db.RootObjects.Where(o => o.modeloDatos.Cedula == patientmodel.Cedula).OrderBy(o => o.id).ToList();
             ViewBag.rootObjects = rootObjects;
-            return View(patientmodel);
+            return View(new PatientDetailsVM
+            {
+                rootObject = rootObjects,
+                patient = patientmodel
+            });
         }
 
         //
@@ -243,5 +247,11 @@ namespace ProyectoFinal.Controllers
             return View(ph);
         }
 
+    }
+
+    public class PatientDetailsVM 
+    {
+        public List<RootObject> rootObject { get; set; }
+        public PatientModel patient { get; set; }
     }
 }

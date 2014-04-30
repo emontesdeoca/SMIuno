@@ -49,6 +49,10 @@ namespace ProyectoFinal.Controllers
                 {
                     int edad = 0;
                     var edadValida = int.TryParse(recibido.modeloDatos.Edad,out edad);
+                    if (string.IsNullOrEmpty(recibido.modeloDatos.Cedula))
+                    {
+                        recibido.modeloDatos.Cedula = Guid.NewGuid().ToString().Substring(0,11);
+                    }
                     db.Patients.Add(new PatientModel
                     {
                         Nombre = recibido.modeloDatos.NombrePaciente,

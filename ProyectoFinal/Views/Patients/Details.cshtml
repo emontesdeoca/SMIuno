@@ -1,4 +1,5 @@
-﻿@model ProyectoFinal.Models.PatientModel
+﻿@using ProyectoFinal.Models
+@model ProyectoFinal.Controllers.PatientDetailsVM
 
 @{
     ViewBag.Title = "Perfil del paciente";
@@ -6,7 +7,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width" />
 <div>
-    <h2>@Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellido)</h2>
+    <h2>@Html.DisplayFor(model => model.patient.Nombre) @Html.DisplayFor(model => model.patient.Apellido)</h2>
 </div>
 <div id="detailInformacion">
     @Html.Label("Información")
@@ -19,45 +20,45 @@
         <legend>PatientModel</legend>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Cedula:")</b> @Html.DisplayFor(model => model.Cedula)</p>
+            <p><b>@Html.DisplayName("Cedula:")</b> @Html.DisplayFor(model => model.patient.Cedula)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Fecha de nacimiento:")</b> @Html.DisplayFor(model => model.FechaNacimiento)</p>
+            <p><b>@Html.DisplayName("Fecha de nacimiento:")</b> @Html.DisplayFor(model => model.patient.FechaNacimiento)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Edad:")</b> @Html.DisplayFor(model => model.Edad)</p>
+            <p><b>@Html.DisplayName("Edad:")</b> @Html.DisplayFor(model => model.patient.Edad)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Sexo:")</b> @Html.DisplayFor(model => model.Sexo)</p>
+            <p><b>@Html.DisplayName("Sexo:")</b> @Html.DisplayFor(model => model.patient.Sexo)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Tipo de Sangre:")</b> @Html.DisplayFor(model => model.TipoSangre)</p>
+            <p><b>@Html.DisplayName("Tipo de Sangre:")</b> @Html.DisplayFor(model => model.patient.TipoSangre)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Seguro Medico:")</b> @Html.DisplayFor(model => model.SeguroMedico)</p>
+            <p><b>@Html.DisplayName("Seguro Medico:")</b> @Html.DisplayFor(model => model.patient.SeguroMedico)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Afiliado No").:</b> @Html.DisplayFor(model => model.NumeroSeguroMedico)</p>
+            <p><b>@Html.DisplayName("Afiliado No").:</b> @Html.DisplayFor(model => model.patient.NumeroSeguroMedico)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("NSS:")</b> @Html.DisplayFor(model => model.NumeroSeguroSocial)</p>
+            <p><b>@Html.DisplayName("NSS:")</b> @Html.DisplayFor(model => model.patient.NumeroSeguroSocial)</p>
         </div>
 
         <div class="display-label">
-            <p><b>@Html.DisplayName("Religión:")</b> @Html.DisplayFor(model => model.Religion)</p>
+            <p><b>@Html.DisplayName("Religión:")</b> @Html.DisplayFor(model => model.patient.Religion)</p>
         </div>
 
 
-        <text>@Html.DisplayName("Creado/Modificado por:") @Html.DisplayFor(model => model.CreadoPor)</text>
+        <text>@Html.DisplayName("Creado/Modificado por:") @Html.DisplayFor(model => model.patient.CreadoPor)</text>
 
-        (@Html.ActionLink("Editar", "Edit", new { id = Model.Id }))
+        (@Html.ActionLink("Editar", "Edit", new { id = Model.patient.Id }))
 
     </fieldset>
 </section>
@@ -69,13 +70,13 @@
     <fieldset>
         <legend>Formularios</legend>
         <div>
-            <img src="~/Images/blood pressure.png" width="22" height="22" />@Html.ActionLink("Presión Sanguinea", "Create", "FormBlood", new { id = Model.Id }, null)
+            <img src="~/Images/blood pressure.png" width="22" height="22" />@Html.ActionLink("Presión Sanguinea", "Create", "FormBlood", new { id = Model.patient.Id }, null)
         </div>
         <div>
-            <img src="~/Images/heart.png" width="22" height="22" />@Html.ActionLink("Signos Vitales", "Create", "VitalSign", new { id = Model.Id }, null)
+            <img src="~/Images/heart.png" width="22" height="22" />@Html.ActionLink("Signos Vitales", "Create", "VitalSign", new { id = Model.patient.Id }, null)
         </div>
         <div>
-            <img src="~/Images/syringe.png" width="22" height="22" />@Html.ActionLink("Vacunas", "Create", "FormVaccination", new { id = Model.Id }, null)
+            <img src="~/Images/syringe.png" width="22" height="22" />@Html.ActionLink("Vacunas", "Create", "FormVaccination", new { id = Model.patient.Id }, null)
         </div>
         @*<div>
             <img src="~/Images/iv bag.png" width="22" height="22" />@Html.ActionLink("Medicamentos", "SearchPatients", "Patients")
@@ -87,7 +88,7 @@
             <img src="~/Images/surgeon.png" width="22" height="22" />@Html.ActionLink("Cirugias", "SearchPatients", "Patients")*@
         </div>
         <div>
-            @Html.ActionLink("Documentos", "Create", "UploadPhotos", new { id = Model.Id }, null)
+            @Html.ActionLink("Documentos", "Create", "UploadPhotos", new { id = Model.patient.Id }, null)
         </div>
 
 
@@ -121,6 +122,97 @@
 
     <div id="DisplayPartialViewCuatro" style="border-radius:4px">
         @Html.Action("Upload", "Patients")
+    </div>
+    
+    <div id="DisplayPartialViewCuatro" style="border-radius:4px">
+
+        <div id="detailFormName">
+            @Html.Label("Historial de Vacunas")
+        </div>
+        @*<p>
+                @Html.ActionLink("Nueva entrada", "Create", "FormBlood")
+            </p>*@
+        <table>
+            <tr>
+                <th>
+                    @Html.Label("Fecha")
+                </th>
+                <th>
+                    @Html.Label("Paciente")
+                </th>
+                <th>
+                    @Html.Label("Responsable")
+                </th>
+                <th>
+                    @Html.Label("Edad")
+                </th>
+                <th>
+                    @Html.Label("Sexo")
+                </th>
+                <th>
+                    @Html.Label("Alergias")
+                </th>
+                <th>
+                    @Html.Label("Nivel 1")
+                </th>
+                <th>
+                    @Html.Label("Posición 1")
+                </th>
+                <th>
+                    @Html.Label("Nivel 2")
+                </th>
+                <th>
+                    @Html.Label("Posición 2")
+                </th>
+                <th>
+                    @Html.Label("Nivel 3")
+                </th>
+                <th>
+                    @Html.Label("Posición 3")
+                </th>
+            </tr>
+
+            @foreach (RootObject item in Model.rootObject)
+            {
+                <tr>
+                    <td>
+                        @item.modeloDatos.Fecha.dayOfMonth/@item.modeloDatos.Fecha.month/@item.modeloDatos.Fecha.year @item.modeloDatos.Fecha.hourOfDay:@item.modeloDatos.Fecha.minute:@item.modeloDatos.Fecha.second
+                    </td>
+                    <td>
+                        @item.modeloDatos.NombrePaciente
+                    </td>
+                    <td>
+                        @item.modeloDatos.NombreResponsable
+                    </td>
+                    <td>
+                        @item.modeloDatos.Edad
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modeloDatos.Sexo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modeloMotivos.Alergias)
+                    </td>
+                    @foreach (var trauma in item.modeloTrauma)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => trauma.Nivel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => trauma.Posicion)
+                        </td>
+                    }
+
+                    @*        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+
     </div>
 
 </section>
