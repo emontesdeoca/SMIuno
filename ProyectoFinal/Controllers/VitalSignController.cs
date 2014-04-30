@@ -56,7 +56,7 @@ namespace ProyectoFinal.Controllers
                 formvitalsigns.PatientModelId = id;
                 db.FormVital.Add(formvitalsigns);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Patients", new { id = id });
             }
 
             return View(formvitalsigns);

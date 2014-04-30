@@ -34,6 +34,8 @@ namespace ProyectoFinal.Controllers
             {
                 return HttpNotFound();
             }
+            var rootObjects = db.RootObjects.Where(o => o.modeloDatos.Cedula == patientmodel.Cedula).OrderBy(o => o.id);
+            ViewBag.rootObjects = rootObjects;
             return View(patientmodel);
         }
 

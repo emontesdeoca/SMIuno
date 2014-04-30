@@ -56,7 +56,7 @@ namespace ProyectoFinal.Controllers
                 formbloodpressure.PatientModelId = id;
                 db.FormBlood.Add(formbloodpressure);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Patients", new {id = id});
             }
 
             return View(formbloodpressure);

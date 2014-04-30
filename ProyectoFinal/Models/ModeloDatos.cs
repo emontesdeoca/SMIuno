@@ -13,5 +13,6 @@ namespace ProyectoFinal.Models
         public string NumeroContacto { get; set; }
         public string SeguroMedico { get; set; }
         public string Sexo { get; set; }
+        public string Cedula { get; set; }
     }
 }

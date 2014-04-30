@@ -263,6 +263,10 @@
     <Compile Include="Migrations\201404300712332_klk.Designer.cs">
       <DependentUpon>201404300712332_klk.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404301743061_AddingCedula.cs" />
+    <Compile Include="Migrations\201404301743061_AddingCedula.Designer.cs">
+      <DependentUpon>201404301743061_AddingCedula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ModeloCoordenadasDos.cs" />
@@ -514,6 +518,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404300712332_klk.resx">
       <DependentUpon>201404300712332_klk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404301743061_AddingCedula.resx">
+      <DependentUpon>201404301743061_AddingCedula.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

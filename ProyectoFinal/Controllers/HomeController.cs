@@ -44,6 +44,8 @@ namespace ProyectoFinal.Controllers
             try
             {
                 var recibido = JsonConvert.DeserializeObject<RootObject>(data);
+
+
                 repo.InsertOrUpdate(recibido);
                 repo.Save();
             }

@@ -56,7 +56,7 @@ namespace ProyectoFinal.Controllers
                 formvaccinations.PatientModelId = id;
                 db.FormVacci.Add(formvaccinations);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Patients", new { id = id });
             }
 
             return View(formvaccinations);
