@@ -10,5 +10,6 @@ namespace ProyectoFinal.Models
         public DateTime fecha { get; set; }
         public string latitudTres { get; set; }
         public string longitudTres { get; set; }
+        public int HospId { get; set; }
     }
 }

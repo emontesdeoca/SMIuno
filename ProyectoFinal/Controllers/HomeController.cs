@@ -48,10 +48,10 @@ namespace ProyectoFinal.Controllers
                 if (!db.Patients.Any(model => model.Cedula == recibido.modeloDatos.Cedula))
                 {
                     int edad = 0;
-                    var edadValida = int.TryParse(recibido.modeloDatos.Edad,out edad);
+                    var edadValida = int.TryParse(recibido.modeloDatos.Edad, out edad);
                     if (string.IsNullOrEmpty(recibido.modeloDatos.Cedula))
                     {
-                        recibido.modeloDatos.Cedula = Guid.NewGuid().ToString().Substring(0,11);
+                        recibido.modeloDatos.Cedula = Guid.NewGuid().ToString().Substring(0, 11);
                     }
                     db.Patients.Add(new PatientModel
                     {
@@ -60,32 +60,33 @@ namespace ProyectoFinal.Controllers
                         CreadoPor = "Paramédico",
                         Edad = (edadValida) ? edad : 0,
                         SeguroMedico = recibido.modeloDatos.SeguroMedico,
-                        Sexo = recibido.modeloDatos.Sexo   ,
-                        FechaNacimiento = new DateTime(DateTime.Now.Year - edad,1,1)
+                        Sexo = recibido.modeloDatos.Sexo,
+                        FechaNacimiento = new DateTime(DateTime.Now.Year - edad, 1, 1)
                     });
                     db.SaveChanges();
                 }
-
+                recibido.HospId = Config.HospitalId;
                 repo.InsertOrUpdate(recibido);
                 repo.Save();
             }
             catch (Exception err)
             {
-                return new JsonResult { Data = err.ToString(),JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+                return new JsonResult { Data = err.ToString(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = "Eureka",JsonRequestBehavior = JsonRequestBehavior.AllowGet};
+            return new JsonResult { Data = "Eureka", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         [HttpGet]
         [AllowAnonymous]
         public string Ubicacion(string latitud, string longitud, int id)
         {
-            ModeloCoordenadasUno coordenadaUno = new ModeloCoordenadasUno();
-            ModeloCoordenadasDos coordenadaDos = new ModeloCoordenadasDos();
-            ModeloCoordenadasTres coordenadaTres = new ModeloCoordenadasTres();
+            var coordenadaUno = new ModeloCoordenadasUno();
+            var coordenadaDos = new ModeloCoordenadasDos();
+            var coordenadaTres = new ModeloCoordenadasTres();
 
             if (id == 1)
             {
+                coordenadaUno.HospId = Config.HospitalId;
                 coordenadaUno.id = id;
                 coordenadaUno.latitudUno = latitud;
                 coordenadaUno.longitudUno = longitud;
@@ -97,6 +98,7 @@ namespace ProyectoFinal.Controllers
             }
             if (id == 2)
             {
+                coordenadaDos.HospId = Config.HospitalId;
                 coordenadaDos.id = id;
                 coordenadaDos.latitudDos = latitud;
                 coordenadaDos.longitudDos = longitud;
@@ -108,6 +110,7 @@ namespace ProyectoFinal.Controllers
             }
             if (id == 3)
             {
+                coordenadaTres.HospId = Config.HospitalId;
                 coordenadaTres.id = id;
                 coordenadaTres.latitudTres = latitud;
                 coordenadaTres.longitudTres = longitud;
@@ -134,11 +137,11 @@ namespace ProyectoFinal.Controllers
             var locationTres = (from o in db.ModeloCoordenadaTres orderby o.id descending select o).FirstOrDefault();
             ViewBag.LatitudTres = locationTres.latitudTres;
             ViewBag.LongitudTres = locationTres.longitudTres;
-        
-            //Response.AddHeader("Refresh", "10");
-            return View(db.RootObjects.ToList());
-        }
 
+            var rootObjects = db.RootObjects.Where(o => Config.HospitalId == 0 || Config.HospitalId == o.HospId);
+
+            return View(rootObjects.ToList());
+        }
         public JsonResult GetAmbulances()
         {
 
@@ -155,6 +158,5 @@ namespace ProyectoFinal.Controllers
             result.Data = data;
             return result;
         }
-
     }
 }

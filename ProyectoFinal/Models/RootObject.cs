@@ -13,5 +13,6 @@ namespace ProyectoFinal.Models
         public virtual ModeloCoordenadasUno modeloCoordenadasUno { get; set; }
         public virtual ModeloCoordenadasDos modeloCoordenadasDos { get; set; }
         public virtual ModeloCoordenadasTres modeloCoordenadasTres { get; set; }
+        public int HospId { get; set; }
     }
 }
